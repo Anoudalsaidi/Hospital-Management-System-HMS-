@@ -1,6 +1,7 @@
 ﻿using Hospital_Management_System.Models;
 
 using System.ComponentModel;
+using System.Timers;
 {
     
 }
@@ -104,7 +105,7 @@ namespace Hospital_Management_System
         
         }
 
-        public static void ViewDoctorsbySpecialization(HospitalContext context)
+        public static void ViewDoctorsbySpecialization(HospitalContext context)// case 4
         {
         
             Console.WriteLine("Seclect available Specialization ");
@@ -118,11 +119,12 @@ namespace Hospital_Management_System
 
                 Console.WriteLine($"All Doctors with Specialization{context.Doctors}");
 
-                int drId = int.Parse(Console.ReadLine());
-                int drSpecialization = int.Parse(Console.ReadLine());
+                var drId = int.Parse(Console.ReadLine());
+                //var drSpecialization = int.Parse(Console.ReadLine());
 
+                var selectdr = context.Doctors.Find(item => item.doctorId == drId);
 
-                if (drId == drSpecialization)
+                if (drId== DR.doctorId)
                 {
                     Console.WriteLine($"Doctor ID :{DR.doctorId}," +
                         $"Specialization:{DR.doctorSpecialization}");
@@ -138,10 +140,55 @@ namespace Hospital_Management_System
 
         }
 
+        public static void AddAvailableDcotorTimeSlot(HospitalContext context)
+        {
+            
+
+            foreach (AvailableSlot slot in context.Slots)
+            {
+                int slodid = (context.Slots.Count) + 1;
+
+                Console.WriteLine("Enter Doctor ID");
+                int doctorid = int.Parse(Console.ReadLine());
+
+                Console.WriteLine("Enter slot Date");
+                string slotdate = Console.ReadLine();
+
+                Console.WriteLine("Enter slot Time");
+                string slottime = Console.ReadLine();
+
+                bool check = false;
+               
+                if(slot.isBooked == false)
+                {
+                    context.Slots.Add(new AvailableSlot
+                    {
+                        doctorId= doctorid,
+                        slotDate= slotdate,
+                        slotTime= slottime
+
+                    });
+                    Console.WriteLine($"Slot has been added{slodid} with doctor id {slot.doctorId},Ready to book");
+                    
+                }
+                
+                else
+                {
+                    Console.WriteLine("No Avaiable Slot");
 
 
+                }
 
+                return;
 
+            }
+         
+        }//case 5 (retern)
+
+        public static void BookAppointment(HospitalContext context)
+        {
+
+        }
 
 
 
@@ -187,7 +234,12 @@ namespace Hospital_Management_System
                     case 4:
                         ViewDoctorsbySpecialization(context);
                         break;
-                   
+                    case 5:
+                        AddAvailableDcotorTimeSlot(context);
+                        break;
+                    case 6:
+                        AddAvailableDcotorTimeSlot(context);
+                        break;
 
 
                 }
