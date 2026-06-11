@@ -9,7 +9,7 @@ namespace Hospital_Management_System
 {
     internal class Program
     {
-        public static void Registration(HospitalContext context)
+        public static void Registration(HospitalContext context)//case 1
         {
             int userId = (context.Patients.Count) + 1;
             
