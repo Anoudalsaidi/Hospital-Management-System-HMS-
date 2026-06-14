@@ -349,8 +349,7 @@ namespace Hospital_Management_System
                     case 8:
                         VisitMedicalRecord(context);
                         break;
-                    case 9:
-                        break;
+                  
 
                 }
             }
