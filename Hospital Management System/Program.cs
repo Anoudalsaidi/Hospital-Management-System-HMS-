@@ -266,34 +266,8 @@ namespace Hospital_Management_System
             Console.WriteLine("Enter appointment ID: ");
             int appointmentID = int.Parse(Console.ReadLine());
 
-            //if(context.Appointments.Count == 0)
-            //{
-            //    Console.WriteLine(" finished Appointment patient");
-                
-
-            //    Console.WriteLine("Enter diagnosis : ");
-            //    string diagnosi = Console.ReadLine();
-
-            //    Console.WriteLine("Enter prescription: ");
-            //    string prescript = Console.ReadLine();
-
-            //    Console.WriteLine("Enter visit Date get: ");
-            //    string visitDate = Console.ReadLine();
-
-            //    Console.WriteLine("Enter consultation fee");
-            //    decimal consfee = decimal.Parse(Console.ReadLine());
-            //    return;
-            //}
-
-            foreach(Appointment appotment in context.Appointments)
-            {
-                if(appotment.appointmentId == appointmentID)
-                {
-                    Console.WriteLine("finished Appointment patient");
-                    return;
-                }
-               
-            }
+            var selectappoimnet = context.Appointments.FirstOrDefault(item => item.appointmentId == appointmentID);
+           
             Console.WriteLine("Enter diagnosis : ");
             string diagnosi = Console.ReadLine();
 
@@ -319,6 +293,8 @@ namespace Hospital_Management_System
                 visitFee=consfee
 
             });
+               //update???????
+
                 Console.WriteLine(" Medical Record After a Visit");
                 Console.WriteLine($"{context.Records}");
 
