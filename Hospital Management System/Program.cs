@@ -230,7 +230,7 @@ namespace Hospital_Management_System
             int AppointmentID = int.Parse(Console.ReadLine());
 
             var selecetedAppoment = context.Appointments.FirstOrDefault(item => item.appointmentId == AppointmentID);
-            var checkappoment = context.Appointments.Where(item => item.appointmentId == AppointmentID);
+           
 
             if (context.Appointments.Count == 0)
             {
@@ -238,33 +238,91 @@ namespace Hospital_Management_System
                 return;
             }
 
-            bool status = false;
-            foreach(Appointment appitment in context.Appointments)
-            {
-                if(appitment.status == "booked")
+  
+           
+                if(selecetedAppoment.status == "booked")
                 {
                     Console.WriteLine("cancel appointment succeffully");
-                    appitment.status = "cancel";
-                    status = true;
+                    selecetedAppoment.status = "cancel";
+                return;
+                   
 
                 }
-                
-
-            }
-            status = false;
-
-
-            // update ????
-            context.Appointments.Add(new Appointment
-            {
-
-            });
-
            
 
         } // case 7
 
+        public static void VisitMedicalRecord(HospitalContext context)
+        {
 
+            int vistID = (context.Records.Count) + 1;
+
+            Console.WriteLine("Enter Patient ID: ");
+            int patientID = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter Doctor ID: ");
+            int doctorID = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter appointment ID: ");
+            int appointmentID = int.Parse(Console.ReadLine());
+
+            //if(context.Appointments.Count == 0)
+            //{
+            //    Console.WriteLine(" finished Appointment patient");
+                
+
+            //    Console.WriteLine("Enter diagnosis : ");
+            //    string diagnosi = Console.ReadLine();
+
+            //    Console.WriteLine("Enter prescription: ");
+            //    string prescript = Console.ReadLine();
+
+            //    Console.WriteLine("Enter visit Date get: ");
+            //    string visitDate = Console.ReadLine();
+
+            //    Console.WriteLine("Enter consultation fee");
+            //    decimal consfee = decimal.Parse(Console.ReadLine());
+            //    return;
+            //}
+
+            foreach(Appointment appotment in context.Appointments)
+            {
+                if(appotment.appointmentId == appointmentID)
+                {
+                    Console.WriteLine("finished Appointment patient");
+                    return;
+                }
+               
+            }
+            Console.WriteLine("Enter diagnosis : ");
+            string diagnosi = Console.ReadLine();
+
+            Console.WriteLine("Enter prescription: ");
+            string prescript = Console.ReadLine();
+
+            Console.WriteLine("Enter visit Date get: ");
+            string visitDate = Console.ReadLine();
+
+            Console.WriteLine("Enter consultation fee");
+            decimal consfee = decimal.Parse(Console.ReadLine());
+
+
+            context.Records.Add(new MedicalRecord
+            {
+                recordId=vistID,
+                patientId=patientID,
+                doctorId=doctorID,
+                appointmentId=appointmentID,
+                diagnosis=diagnosi,
+                prescription=prescript,
+                visitDateget=visitDate,
+                visitFee=consfee
+
+            });
+                Console.WriteLine(" Medical Record After a Visit");
+                Console.WriteLine($"{context.Records}");
+
+        } // case 8
 
             static void Main(string[] args)
         {
@@ -313,8 +371,10 @@ namespace Hospital_Management_System
                         CancelAppointment(context);
                         break;
                     case 8:
+                        VisitMedicalRecord(context);
                         break;
-
+                    case 9:
+                        break;
 
                 }
             }
