@@ -224,7 +224,47 @@ namespace Hospital_Management_System
             
         } // case 6
 
-     
+        public static void CancelAppointment(HospitalContext context)
+        {
+            Console.WriteLine("Enter Appointment ID You want To Cancel:");
+            int AppointmentID = int.Parse(Console.ReadLine());
+
+            var selecetedAppoment = context.Appointments.FirstOrDefault(item => item.appointmentId == AppointmentID);
+            var checkappoment = context.Appointments.Where(item => item.appointmentId == AppointmentID);
+
+            if (context.Appointments.Count == 0)
+            {
+                Console.WriteLine("No appointments");
+                return;
+            }
+
+            bool status = false;
+            foreach(Appointment appitment in context.Appointments)
+            {
+                if(appitment.status == "booked")
+                {
+                    Console.WriteLine("cancel appointment succeffully");
+                    appitment.status = "cancel";
+                    status = true;
+
+                }
+                
+
+            }
+            status = false;
+
+
+            // update ????
+            context.Appointments.Add(new Appointment
+            {
+
+            });
+
+           
+
+        } // case 7
+
+
 
             static void Main(string[] args)
         {
@@ -270,6 +310,9 @@ namespace Hospital_Management_System
                         break;
 
                     case 7:
+                        CancelAppointment(context);
+                        break;
+                    case 8:
                         break;
 
 
