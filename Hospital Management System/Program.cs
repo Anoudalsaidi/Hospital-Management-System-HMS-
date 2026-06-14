@@ -84,121 +84,149 @@ namespace Hospital_Management_System
                 doctorEmail= drEmail,
                 consultationFee= drconsultationFee
             });
-            Console.WriteLine($"{drName} Doctor Addedd Succefully" + drId);
+            Console.WriteLine($"{drName} Addedd Succefully with ID:" + drId);
         }
 
         public static void ViewAllPatient(HospitalContext context)// case 3
         {
-            foreach(Patient patient in context.Patients)
+            if (context.Patients.Count == 0)
             {
-                if (context.Patients == null)
-                {
-                    Console.WriteLine("No Patient Available");
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine($"Patient ID:{patient.patientId}");
-                    
-                }
+                Console.WriteLine("No Patient Registered Yet");
+
+
             }
-        
+            else
+            {
+                foreach (Patient patient in context.Patients)
+                {
+                    Console.WriteLine($"patient Id:{patient.patientId}" +
+                        $"patient Name:{patient.patientName}" +
+                        $"patient Age:{patient.patientAge}" +
+                        $"patient Gender:{patient.patientGender}" +
+                        $"patient Phone:{patient.patientPhone}" +
+                        $"patient Email:{patient.patientEmail}" +
+                        $"patient Blood Type:{patient.patientBloodType}");
+
+                }
+
+            }
         }
 
         public static void ViewDoctorsbySpecialization(HospitalContext context)// case 4
         {
-        
-            Console.WriteLine("Seclect available Specialization ");
-                     
-           foreach(Doctor DR in context.Doctors)
+            Console.WriteLine("Enter your Specialization:");
+            var splict = Console.ReadLine();
+
+
+            bool found = false;
+
+            foreach (Doctor drSpecialization in context.Doctors)
             {
-                //Console.WriteLine($"Doctor ID :{DR.doctorId}," +
-                //    $"Doctor Name:{DR.doctorName}" +
-                //    $"Doctor Specialization{DR.doctorSpecialization}" +
-                //    $"consultation Fee:{DR.consultationFee}");
 
-                Console.WriteLine($"All Doctors with Specialization{context.Doctors}");
-
-                var drId = int.Parse(Console.ReadLine());
-                //var drSpecialization = int.Parse(Console.ReadLine());
-
-                var selectdr = context.Doctors.Find(item => item.doctorId == drId);
-
-                if (drId== DR.doctorId)
+                if (splict == drSpecialization.doctorSpecialization)
                 {
-                    Console.WriteLine($"Doctor ID :{DR.doctorId}," +
-                        $"Specialization:{DR.doctorSpecialization}");
-                    return;
+                    Console.WriteLine($"doctor Name:{drSpecialization.doctorName} with Specialization:{drSpecialization.doctorSpecialization}");
+                    found = true;
                 }
-                else
-                {
-                    Console.WriteLine("NO Doctor match with this Specialization ");
-                }
-
             }
-
-
+            if (!found)
+            {
+                Console.WriteLine("No Doctor Match");
+            }
         }
 
         public static void AddAvailableDcotorTimeSlot(HospitalContext context)
         {
-            
 
-            foreach (AvailableSlot slot in context.Slots)
+            int slodid = (context.Slots.Count) + 1;
+
+            Console.WriteLine("Enter Doctor ID");
+            int doctorid = int.Parse(Console.ReadLine());
+
+            Console.WriteLine("Enter slot Date");
+            string slotdate = Console.ReadLine();
+
+            Console.WriteLine("Enter slot Time");
+            string slottime = Console.ReadLine();
+
+
+            context.Slots.Add(new AvailableSlot
             {
-                int slodid = (context.Slots.Count) + 1;
+                slotId = slodid,
+                doctorId = doctorid,
+                slotDate = slotdate,
+                slotTime = slottime,
+                isBooked = false
 
-                Console.WriteLine("Enter Doctor ID");
-                int doctorid = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("Enter slot Date");
-                string slotdate = Console.ReadLine();
-
-                Console.WriteLine("Enter slot Time");
-                string slottime = Console.ReadLine();
-
-                bool check = false;
-               
-                if(slot.isBooked == false)
-                {
-                    context.Slots.Add(new AvailableSlot
-                    {
-                        doctorId= doctorid,
-                        slotDate= slotdate,
-                        slotTime= slottime
-
-                    });
-                    Console.WriteLine($"Slot has been added{slodid} with doctor id {slot.doctorId},Ready to book");
-                    
-                }
-                
-                else
-                {
-                    Console.WriteLine("No Avaiable Slot");
+            });
+            Console.WriteLine($"Slot has been added{slodid},Ready to book");
 
 
-                }
 
-                return;
-
-            }
-         
-        }//case 5 (retern)
+        } // case 5
 
         public static void BookAppointment(HospitalContext context)
         {
+            Console.WriteLine("Enter Patient ID:");
+            int userid = int.Parse(Console.ReadLine());
 
-        }
+            foreach(Doctor Dr in context.Doctors)
+            {
+                Console.WriteLine($"Doctor ID:{Dr.doctorId}" +
+                    $"Doctor Name:{Dr.doctorName}" +
+                    $"Specialization:{Dr.doctorSpecialization}");
+            }
 
+            Console.WriteLine("Enter Selected Doctor ID:");
+            int drid = int.Parse(Console.ReadLine());
 
+            var SelectedDrID = context.Doctors.FirstOrDefault(item => item.doctorId == drid);
 
+            var avaiableslot = context.Slots.Where(item => item.doctorId == drid && item.isBooked == false);
 
+            if(context.Slots.Count == 0)
+            {
+                Console.WriteLine("No Avaiable slots For this Doctor");
+                return;
+            }
 
+            foreach(AvailableSlot book in context.Slots)
+            {
+                Console.WriteLine($" Available Slot ID{book.slotId}" +
+                    $"Doctor ID:{book.doctorId}" +
+                    $"Slot Date:{book.slotDate}" +
+                    $"Slot Time:{book.slotTime}");
+            }
 
+            Console.WriteLine("Enter Selected slot ID:");
+            int SlotID = int.Parse(Console.ReadLine());
 
+            Console.WriteLine("Enter Doctor ID:");
+            int DrID = int.Parse(Console.ReadLine());
 
+            Console.WriteLine("Enter Slot Date:");
+            string slotdate = Console.ReadLine();
 
-        static void Main(string[] args)
+            Console.WriteLine("Enter Slot Time:");
+            string slottime = Console.ReadLine();
+
+            context.Slots.Add (new AvailableSlot
+            {
+                slotId= SlotID,
+                doctorId= DrID,
+                slotDate=slotdate,
+                slotTime=slottime,
+                isBooked=true
+
+            });
+
+            Console.WriteLine("New Book Appoinment has Been addedd");
+            
+        } // case 6
+
+     
+
+            static void Main(string[] args)
         {
             HospitalContext context = new HospitalContext();
             context.Doctors = new List<Doctor>();
@@ -238,7 +266,10 @@ namespace Hospital_Management_System
                         AddAvailableDcotorTimeSlot(context);
                         break;
                     case 6:
-                        AddAvailableDcotorTimeSlot(context);
+                        BookAppointment(context);
+                        break;
+
+                    case 7:
                         break;
 
 
