@@ -43,7 +43,7 @@ namespace Hospital_Management_System
 
             });
 
-            Console.WriteLine($"patient{userName} Addedd successfully With ID: " + userId);
+            Console.WriteLine($"patient {userName} Addedd successfully With ID: " + userId);
 
 
         }
@@ -125,8 +125,8 @@ namespace Hospital_Management_System
 
                 if (splict == drSpecialization.doctorSpecialization)
                 {
-                    Console.WriteLine($"doctor Name:{drSpecialization.doctorName}\n with Specialization:{drSpecialization.doctorSpecialization}" +
-                        $"consultation Fee{drSpecialization.doctorName}");
+                    Console.WriteLine($"doctor Name:{drSpecialization.doctorName}\n Specialization:{drSpecialization.doctorSpecialization}\n" +
+                        $"consultation Fee{drSpecialization.consultationFee}");
                     found = true;
                 }
             }
@@ -168,7 +168,7 @@ namespace Hospital_Management_System
                 isBooked = false
 
             });
-            Console.WriteLine($"Slot has been added{slodid},Ready to book");
+            Console.WriteLine($" Slot ID: {slodid} has been added,Ready to book");
 
 
 
@@ -181,12 +181,13 @@ namespace Hospital_Management_System
 
             foreach(Doctor Dr in context.Doctors)
             {
-                Console.WriteLine($"Doctor ID:{Dr.doctorId}" +
-                    $"Doctor Name:{Dr.doctorName}" +
+                Console.WriteLine("Doctors Available:\n");
+                Console.WriteLine($"Doctor ID:{Dr.doctorId}\t" +
+                    $"Doctor Name:{Dr.doctorName}\t" +
                     $"Specialization:{Dr.doctorSpecialization}");
             }
 
-            Console.WriteLine("Enter Selected Doctor ID:");
+            Console.WriteLine("\n Enter Selected Doctor ID:");
             int drid = int.Parse(Console.ReadLine());
 
             var SelectedDrID = context.Doctors.FirstOrDefault(item => item.doctorId == drid);
@@ -201,9 +202,9 @@ namespace Hospital_Management_System
 
             foreach(AvailableSlot book in context.Slots)
             {
-                Console.WriteLine($" Available Slot ID{book.slotId}" +
-                    $"Doctor ID:{book.doctorId}" +
-                    $"Slot Date:{book.slotDate}" +
+                Console.WriteLine($" Available Slot\n ID: {book.slotId}\t" +
+                    $"Doctor ID:{book.doctorId}\t" +
+                    $"Slot Date:{book.slotDate}\t" +
                     $"Slot Time:{book.slotTime}");
             }
 
@@ -228,7 +229,7 @@ namespace Hospital_Management_System
                 isBooked=true
 
             });
-
+            int Appoinmentid =(context.Appointments.Count) +1;
             Console.WriteLine("New Book Appoinment has Been addedd");
             
         } // case 6
