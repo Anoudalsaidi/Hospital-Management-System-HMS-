@@ -43,7 +43,7 @@ namespace Hospital_Management_System
 
             });
 
-            Console.WriteLine("patient Addedd successfully With ID: " + userId);
+            Console.WriteLine($"patient{userName} Addedd successfully With ID: " + userId);
 
 
         }
@@ -82,6 +82,7 @@ namespace Hospital_Management_System
                 doctorEmail= drEmail,
                 consultationFee= drconsultationFee
             });
+           
             Console.WriteLine($"DR:{drName} Added Successfully with ID:" + drId);
         }
 
@@ -97,6 +98,7 @@ namespace Hospital_Management_System
             {
                 foreach (Patient patient in context.Patients)
                 {
+                    Console.WriteLine("Patients Detailes:\n");
                     Console.WriteLine($"patient Id:{patient.patientId}\n" +
                         $"patient Name:{patient.patientName}\n" +
                         $"patient Age:{patient.patientAge}\n" +
