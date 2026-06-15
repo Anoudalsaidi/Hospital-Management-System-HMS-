@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hospital_Management_System
 {
-    internal class HospitalContext
+   public class HospitalContext
     {
         public List<Patient> Patients { get; set; }
         public List<MedicalRecord> Records { get; set; }

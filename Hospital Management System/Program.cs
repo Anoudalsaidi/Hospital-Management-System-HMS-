@@ -2,13 +2,11 @@
 
 using System.ComponentModel;
 using System.Timers;
-{
-    
-}
+
 
 namespace Hospital_Management_System
 {
-    internal class Program
+ public class Program
     {
         public static void Registration(HospitalContext context)//case 1
         {
@@ -45,10 +43,10 @@ namespace Hospital_Management_System
 
             });
 
-            Console.WriteLine("patient Addedd Successfully "+ userId);
+            Console.WriteLine("patient Addedd successfully With ID: " + userId);
 
 
-        }//case 1
+        }
 
         public static void AddNewDoctor(HospitalContext context) // case 2
         {
@@ -84,7 +82,7 @@ namespace Hospital_Management_System
                 doctorEmail= drEmail,
                 consultationFee= drconsultationFee
             });
-            Console.WriteLine($"{drName} Addedd Succefully with ID:" + drId);
+            Console.WriteLine($"DR:{drName} Added Successfully with ID:" + drId);
         }
 
         public static void ViewAllPatient(HospitalContext context)// case 3
@@ -92,20 +90,20 @@ namespace Hospital_Management_System
             if (context.Patients.Count == 0)
             {
                 Console.WriteLine("No Patient Registered Yet");
-
+                return;
 
             }
             else
             {
                 foreach (Patient patient in context.Patients)
                 {
-                    Console.WriteLine($"patient Id:{patient.patientId}" +
-                        $"patient Name:{patient.patientName}" +
-                        $"patient Age:{patient.patientAge}" +
-                        $"patient Gender:{patient.patientGender}" +
-                        $"patient Phone:{patient.patientPhone}" +
-                        $"patient Email:{patient.patientEmail}" +
-                        $"patient Blood Type:{patient.patientBloodType}");
+                    Console.WriteLine($"patient Id:{patient.patientId}\n" +
+                        $"patient Name:{patient.patientName}\n" +
+                        $"patient Age:{patient.patientAge}\n" +
+                        $"patient Gender:{patient.patientGender}\n" +
+                        $"patient Phone:{patient.patientPhone}\n" +
+                        $"patient Email:{patient.patientEmail}\n" +
+                        $"patient Blood Type:{patient.patientBloodType}\n");
 
                 }
 
@@ -125,7 +123,8 @@ namespace Hospital_Management_System
 
                 if (splict == drSpecialization.doctorSpecialization)
                 {
-                    Console.WriteLine($"doctor Name:{drSpecialization.doctorName} with Specialization:{drSpecialization.doctorSpecialization}");
+                    Console.WriteLine($"doctor Name:{drSpecialization.doctorName}\n with Specialization:{drSpecialization.doctorSpecialization}" +
+                        $"consultation Fee{drSpecialization.doctorName}");
                     found = true;
                 }
             }
@@ -141,7 +140,15 @@ namespace Hospital_Management_System
             int slodid = (context.Slots.Count) + 1;
 
             Console.WriteLine("Enter Doctor ID");
-            int doctorid = int.Parse(Console.ReadLine());
+            int doctor = int.Parse(Console.ReadLine());
+
+            var checkdoctor = context.Doctors.FirstOrDefault(item => item.doctorId == doctor);
+            if(checkdoctor == null)
+            {
+                Console.WriteLine("Doctor Not Found");
+            }
+
+
 
             Console.WriteLine("Enter slot Date");
             string slotdate = Console.ReadLine();
@@ -153,7 +160,7 @@ namespace Hospital_Management_System
             context.Slots.Add(new AvailableSlot
             {
                 slotId = slodid,
-                doctorId = doctorid,
+                doctorId = doctor,
                 slotDate = slotdate,
                 slotTime = slottime,
                 isBooked = false
@@ -300,8 +307,12 @@ namespace Hospital_Management_System
 
         } // case 8
 
-            static void Main(string[] args)
+        
+        static void Main(string[] args)
         {
+
+
+
             HospitalContext context = new HospitalContext();
             context.Doctors = new List<Doctor>();
             context.Patients = new List<Patient>();
@@ -318,6 +329,11 @@ namespace Hospital_Management_System
                 Console.WriteLine("2. Add new Dector ");
                 Console.WriteLine("3. View All Patients");
                 Console.WriteLine("4. View All Doctors by Specialization ");
+                Console.WriteLine("5. Add an Available Time Slot for a Doctor ");
+                Console.WriteLine("6. Book an Appointment ");
+                Console.WriteLine("7. Cancel an Appointment ");
+                Console.WriteLine("8. Create a Medical Record After a Visit ");
+                Console.WriteLine("0. Exit");
 
                 int option = int.Parse(Console.ReadLine());
                 switch (option)
@@ -349,15 +365,23 @@ namespace Hospital_Management_System
                     case 8:
                         VisitMedicalRecord(context);
                         break;
-                  
+                    case 0:
+                        flag = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalied Input");
+                        break;
+
 
                 }
+
+
+
+                Console.WriteLine("press any key to Continue...");
+                Console.ReadKey();
+                Console.Clear();
             }
-
-
-            Console.WriteLine("press any key to Continue...");
-            Console.ReadKey();
-            Console.Clear();
         }
     }
 }
