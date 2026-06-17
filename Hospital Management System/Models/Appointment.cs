@@ -15,5 +15,17 @@ namespace Hospital_Management_System.Models
         public string appointmentTime { get; set; }
 
         public string status { get; set; }
+
+        public Appointment(int appointmentID, int userid,int drid,string slotDate,string slotTime,string status)
+        {
+            appointmentId = appointmentID;
+            patientId = userid;
+            doctorId = drid;
+            appointmentDate = slotDate;
+            appointmentTime = slotTime;
+            
+
+
+        }
     }
 }

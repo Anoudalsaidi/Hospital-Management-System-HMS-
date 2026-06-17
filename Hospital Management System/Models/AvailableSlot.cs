@@ -15,5 +15,14 @@ namespace Hospital_Management_System.Models
 
         public bool isBooked { get; set; }
 
+
+        public AvailableSlot(int slodid, int doctor, string slotdate, string slottime,bool isBooked)
+        {
+            slotId = slodid;
+            doctorId = doctor;
+            slotDate = slotdate;
+            slotTime = slottime;
+            
+        }
     }
 }
