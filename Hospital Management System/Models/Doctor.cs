@@ -15,16 +15,16 @@ namespace Hospital_Management_System.Models
         public string doctorEmail { get; set; }
         public decimal consultationFee { get; set; }
      
-        public Doctor(int drId,string drName,string drSpecialization,string drPhone,string drEmail,decimal drconsultationFee)
-        {
-            doctorId = drId;
-            doctorName = drName;
-            doctorSpecialization = drSpecialization;
-            doctorPhone = drPhone;
-            doctorEmail = drEmail;
-            consultationFee = drconsultationFee;
+        //public Doctor(int drId,string drName,string drSpecialization,string drPhone,string drEmail,decimal drconsultationFee)
+        //{
+        //    doctorId = drId;
+        //    doctorName = drName;
+        //    doctorSpecialization = drSpecialization;
+        //    doctorPhone = drPhone;
+        //    doctorEmail = drEmail;
+        //    consultationFee = drconsultationFee;
 
-        }
+        //}
         public override string ToString() =>
             $"[{doctorId}] | {doctorName,8} | {doctorSpecialization,10} | {doctorPhone,8} | {doctorEmail,7} | {consultationFee:F2} ";
        

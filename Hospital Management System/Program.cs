@@ -73,34 +73,34 @@ namespace Hospital_Management_System
             decimal drconsultationFee = decimal.Parse(Console.ReadLine());
 
 
-            //context.Doctors.Add(new Doctor
-            //{
-            //    doctorId = drId,
-            //    doctorName= drName,
-            //    doctorSpecialization= drSpecialization,
-            //    doctorPhone= drPhone,
-            //    doctorEmail= drEmail,
-            //    consultationFee= drconsultationFee
-            //});
-           
+            DoctorList.Add(new Doctor
+            {
+                doctorId = drId,
+                doctorName = drName,
+                doctorSpecialization = drSpecialization,
+                doctorPhone = drPhone,
+                doctorEmail = drEmail,
+                consultationFee = drconsultationFee
+            });
+
             Console.WriteLine($"DR:{drName} Added Successfully with ID:" + drId);
         }
 
         public static void ViewAllPatient(List<Patient> PatientList)// case 3
         {
-            bool availablePatient = PatientList.Any(item => item.patientId > 0);
+            //bool availablePatient = PatientList.Any(item => item.patientId > 0);
 
 
             if (PatientList.Count == 0)
             {
                 Console.WriteLine("No Patient Registered Yet");
-                
+                return;
 
             }
-            else
+            
+            foreach(Patient p in PatientList)
             {
-                Console.WriteLine($"Patients Detailes:{availablePatient} ");
-             
+                Console.WriteLine($"Patient ID:{p.patientId} | Patient Name:{p.patientName}| Patient Age: {p.patientAge} | Patient Gender: {p.patientGender} | Patient phone:{p.patientPhone} | Patient Email:{p.patientEmail} | Patient Blood Type:{p.patientBloodType} ");
             }
         }
 
@@ -109,15 +109,16 @@ namespace Hospital_Management_System
             Console.WriteLine("Enter your Specialization:");
             string splict = Console.ReadLine();
 
-            List<Doctor> DrSpecialist = DoctorList.Where(item => item.doctorSpecialization == splict).ToList();
+            List<Doctor> DrSpecialist = DoctorList.Where(item => item.doctorSpecialization.ToLower() == splict).ToList();
            
-            if(splict != null)
+            if(DrSpecialist.Count ==0)
             {
-                printDoctors(DoctorList);
+                Console.WriteLine($"No doctors found with specialization {splict}");
+                return;
             }
-            else
+            foreach(Doctor d in DoctorList)
             {
-                Console.WriteLine("No Doctor Match");
+                Console.WriteLine($" doctor ID:{d.doctorId} | doctor Name: {d.doctorName} ");
             }
 
 
@@ -193,7 +194,7 @@ namespace Hospital_Management_System
             {
                 convertoStringDoctor(selectdoctor);
             }
-            
+            l
 
             foreach (Doctor Dr in appointmentList)
             {
