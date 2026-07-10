@@ -44,48 +44,6 @@ Hospital-Management-System-HMS
 └── HospitalDbContext.cs
 ```
 
-> *Update this structure if your project folders have different names.*
-
----
-
-## 🗄️ Database
-
-### Entity Relationship Diagram (ERD)
-
-Add your ERD diagram below.
-
-```markdown
-![ERD Diagram](images/ERD-Diagram.png)
-```
-
----
-
-## 📸 Screenshots
-
-### Main Menu
-
-```markdown
-![Main Menu](images/main-menu.png)
-```
-
-### Managing Patients
-
-```markdown
-![Patients](images/patients.png)
-```
-
-### Managing Doctors
-
-```markdown
-![Doctors](images/doctors.png)
-```
-
-### Appointment Management
-
-```markdown
-![Appointments](images/appointments.png)
-```
-
 ---
 
 ## 🎯 Highlights
