@@ -1,16 +1,16 @@
 # 🏥 Hospital Management System (HMS)
 
-**.NET | C# | Entity Framework Core | SQL Server**
+**.NET | C# | Entity Framework Core | SQL Server | Console Application**
 
-A comprehensive ASP.NET Core application designed to manage hospital operations efficiently using **Entity Framework Core** and **SQL Server**.
+A Hospital Management System built as a **C# Console Application** using **Entity Framework Core** and **SQL Server** to manage hospital operations efficiently through a simple and interactive command-line interface.
 
 ---
 
 ## 📌 Overview
 
-Hospital Management System (HMS) is a modern application that simplifies hospital management by providing an organized system for managing patients, doctors, appointments, departments, and medical records.
+Hospital Management System (HMS) is a console-based application designed to simplify hospital management by organizing patients, doctors, appointments, and other hospital-related information.
 
-The project demonstrates the implementation of database relationships, CRUD operations, validation, and Entity Framework Core in a real-world healthcare scenario.
+The project demonstrates object-oriented programming principles, Entity Framework Core relationships, CRUD operations, data validation, and SQL Server integration in a real-world healthcare scenario.
 
 ---
 
@@ -21,8 +21,11 @@ The project demonstrates the implementation of database relationships, CRUD oper
 * 📅 Appointment Management
 * 🏥 Department Management
 * 📋 Medical Record Management
-* ✅ CRUD Operations
-* 🔍 Search Functionality
+* ➕ Create Records
+* ✏️ Update Records
+* ❌ Delete Records
+* 🔍 Search Records
+* 📄 View All Records
 * 💾 SQL Server Integration
 * ⚡ Entity Framework Core
 
@@ -33,40 +36,95 @@ The project demonstrates the implementation of database relationships, CRUD oper
 ```text
 Hospital-Management-System-HMS
 │
-├── Controllers
-├── Data
-├── DTOs
 ├── Models
+├── Data
 ├── Services
+├── Migrations
 ├── Program.cs
-└── appsettings.json
+└── HospitalDbContext.cs
+```
+
+> *Update this structure if your project folders have different names.*
+
+---
+
+## 🗄️ Database
+
+### Entity Relationship Diagram (ERD)
+
+Add your ERD diagram below.
+
+```markdown
+![ERD Diagram](images/ERD-Diagram.png)
 ```
 
 ---
+
+## 📸 Screenshots
+
+### Main Menu
+
+```markdown
+![Main Menu](images/main-menu.png)
+```
+
+### Managing Patients
+
+```markdown
+![Patients](images/patients.png)
+```
+
+### Managing Doctors
+
+```markdown
+![Doctors](images/doctors.png)
+```
+
+### Appointment Management
+
+```markdown
+![Appointments](images/appointments.png)
+```
 
 ---
 
 ## 🎯 Highlights
 
+* ✅ Console-Based User Interface
 * ✅ Clean and Organized Project Structure
 * ✅ Entity Framework Core Integration
 * ✅ SQL Server Database
 * ✅ CRUD Operations
 * ✅ Database Relationships
-* ✅ Scalable Backend Design
+* ✅ Input Validation
+* ✅ LINQ Queries
 
 ---
 
 ## 🔄 System Workflow
 
-1. Manage hospital departments.
-2. Register doctors.
-3. Register patients.
-4. Schedule appointments.
-5. Store and manage hospital records.
-6. Retrieve and update information efficiently.
+1. Launch the application.
+2. Select an option from the main menu.
+3. Enter the required information.
+4. The system validates the input.
+5. Data is stored or retrieved using Entity Framework Core.
+6. Results are displayed in the console.
 
 ---
+
+## 📋 Main Operations
+
+| Operation | Description                          |
+| --------- | ------------------------------------ |
+| Add       | Create new records                   |
+| View      | Display existing records             |
+| Update    | Modify stored information            |
+| Delete    | Remove records                       |
+| Search    | Find specific records                |
+| Reports   | Display available system information |
+
+---
+
 
 ## 📋 Main Modules
 
@@ -80,10 +138,11 @@ Hospital-Management-System-HMS
 
 ---
 
+
 ## 🛠️ Tech Stack
 
-* ASP.NET Core
 * C#
+* .NET
 * Entity Framework Core
 * SQL Server
 * LINQ
@@ -108,23 +167,25 @@ dotnet run
 
 ## 📚 What I Learned
 
+* Building a complete console-based management system
 * Designing relational databases
 * Implementing Entity Framework Core relationships
-* Building CRUD operations
-* Managing hospital data efficiently
-* Working with LINQ queries
-* Creating scalable backend applications
+* Performing CRUD operations
+* Writing LINQ queries
+* Validating user input
+* Working with SQL Server databases
 
 ---
 
 ## 🚀 Future Improvements
 
-* JWT Authentication
+* User Authentication
 * Role-Based Authorization
-* Email Notifications
+* Export Reports
+* Dashboard Version (Web)
 * Docker Support
 * Unit Testing
-* GitHub Actions (CI/CD)
+* Logging
 * REST API Integration
 
 ---
@@ -133,4 +194,4 @@ dotnet run
 
 **Anoud Alsaidi**
 
-Backend Developer | ASP.NET Core | Entity Framework Core | SQL Server
+Backend Developer | .NET | C# | Entity Framework Core | SQL Server
