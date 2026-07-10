@@ -112,6 +112,19 @@ Add your ERD diagram below.
 
 ---
 
+## 📋 Main Modules
+
+| Module          | Description                       |
+| --------------- | --------------------------------- |
+| Patients        | Manage patient information        |
+| Doctors         | Manage doctor records             |
+| Departments     | Organize hospital departments     |
+| Appointments    | Schedule and manage appointments  |
+| Medical Records | Store patient medical information |
+
+---
+
+
 ## 📋 Main Operations
 
 | Operation | Description                          |
@@ -122,19 +135,6 @@ Add your ERD diagram below.
 | Delete    | Remove records                       |
 | Search    | Find specific records                |
 | Reports   | Display available system information |
-
----
-
-
-## 📋 Main Modules
-
-| Module          | Description                       |
-| --------------- | --------------------------------- |
-| Patients        | Manage patient information        |
-| Doctors         | Manage doctor records             |
-| Departments     | Organize hospital departments     |
-| Appointments    | Schedule and manage appointments  |
-| Medical Records | Store patient medical information |
 
 ---
 
