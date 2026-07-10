@@ -44,44 +44,6 @@ Hospital-Management-System-HMS
 
 ---
 
-## 🗄️ Database
-
-**Entity Relationship Diagram (ERD)**
-
-> Add your ERD diagram here.
-
-```markdown
-![ERD Diagram](images/ERD-Diagram.png)
-```
-
----
-
-## 📸 Screenshots
-
-### Home Page
-
-```markdown
-![Home](images/home.png)
-```
-
-### Patient Management
-
-```markdown
-![Patients](images/patients.png)
-```
-
-### Doctor Management
-
-```markdown
-![Doctors](images/doctors.png)
-```
-
-### Appointment Management
-
-```markdown
-![Appointments](images/appointments.png)
-```
-
 ---
 
 ## 🎯 Highlights
