@@ -1,6 +1,10 @@
 # 🏥 Hospital Management System (HMS)
 
-**.NET | C# | Entity Framework Core | SQL Server | Console Application**
+![.NET](https://img.shields.io/badge/.NET-8.0-purple)
+![C#](https://img.shields.io/badge/C%23-Language-blue)
+![Entity Framework Core](https://img.shields.io/badge/EF_Core-ORM-green)
+![SQL Server](https://img.shields.io/badge/SQL_Server-Database-red)
+![Console](https://img.shields.io/badge/Application-Console-orange)
 
 A Hospital Management System built as a **C# Console Application** using **Entity Framework Core** and **SQL Server** to manage hospital operations efficiently through a simple and interactive command-line interface.
 
