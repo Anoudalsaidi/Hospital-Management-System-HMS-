@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="images/banner.png" alt="Hospital Management System Banner" width="100%">
+  <img src="banner.png" alt="Hospital Management System Banner" width="100%">
 </p>
 
 # 🏥 Hospital Management System (HMS)
